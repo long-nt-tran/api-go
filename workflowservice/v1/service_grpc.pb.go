@@ -141,6 +141,7 @@ const (
 	WorkflowService_UpdateActivityExecutionOptions_FullMethodName               = "/temporal.api.workflowservice.v1.WorkflowService/UpdateActivityExecutionOptions"
 	WorkflowService_TerminateNexusOperationExecution_FullMethodName             = "/temporal.api.workflowservice.v1.WorkflowService/TerminateNexusOperationExecution"
 	WorkflowService_DeleteNexusOperationExecution_FullMethodName                = "/temporal.api.workflowservice.v1.WorkflowService/DeleteNexusOperationExecution"
+	WorkflowService_GetWorkflowExecutionResult_FullMethodName                   = "/temporal.api.workflowservice.v1.WorkflowService/GetWorkflowExecutionResult"
 )
 
 // WorkflowServiceClient is the client API for WorkflowService service.
@@ -883,6 +884,10 @@ type WorkflowServiceClient interface {
 	//
 	//	aip.dev/not-precedent: Nexus operation deletion not exposed to HTTP, users should use cancel or terminate. --)
 	DeleteNexusOperationExecution(ctx context.Context, in *DeleteNexusOperationExecutionRequest, opts ...grpc.CallOption) (*DeleteNexusOperationExecutionResponse, error)
+	// GetWorkflowExecutionResult returns the result of a workflow execution. If the workflow
+	// is still running, returns a NotCompleted response and optionally registers callbacks
+	// to be invoked when the workflow completes.
+	GetWorkflowExecutionResult(ctx context.Context, in *GetWorkflowExecutionResultRequest, opts ...grpc.CallOption) (*GetWorkflowExecutionResultResponse, error)
 }
 
 type workflowServiceClient struct {
@@ -2103,6 +2108,16 @@ func (c *workflowServiceClient) DeleteNexusOperationExecution(ctx context.Contex
 	return out, nil
 }
 
+func (c *workflowServiceClient) GetWorkflowExecutionResult(ctx context.Context, in *GetWorkflowExecutionResultRequest, opts ...grpc.CallOption) (*GetWorkflowExecutionResultResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetWorkflowExecutionResultResponse)
+	err := c.cc.Invoke(ctx, WorkflowService_GetWorkflowExecutionResult_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WorkflowServiceServer is the server API for WorkflowService service.
 // All implementations must embed UnimplementedWorkflowServiceServer
 // for forward compatibility.
@@ -2843,6 +2858,10 @@ type WorkflowServiceServer interface {
 	//
 	//	aip.dev/not-precedent: Nexus operation deletion not exposed to HTTP, users should use cancel or terminate. --)
 	DeleteNexusOperationExecution(context.Context, *DeleteNexusOperationExecutionRequest) (*DeleteNexusOperationExecutionResponse, error)
+	// GetWorkflowExecutionResult returns the result of a workflow execution. If the workflow
+	// is still running, returns a NotCompleted response and optionally registers callbacks
+	// to be invoked when the workflow completes.
+	GetWorkflowExecutionResult(context.Context, *GetWorkflowExecutionResultRequest) (*GetWorkflowExecutionResultResponse, error)
 	mustEmbedUnimplementedWorkflowServiceServer()
 }
 
@@ -3215,6 +3234,9 @@ func (UnimplementedWorkflowServiceServer) TerminateNexusOperationExecution(conte
 }
 func (UnimplementedWorkflowServiceServer) DeleteNexusOperationExecution(context.Context, *DeleteNexusOperationExecutionRequest) (*DeleteNexusOperationExecutionResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method DeleteNexusOperationExecution not implemented")
+}
+func (UnimplementedWorkflowServiceServer) GetWorkflowExecutionResult(context.Context, *GetWorkflowExecutionResultRequest) (*GetWorkflowExecutionResultResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method GetWorkflowExecutionResult not implemented")
 }
 func (UnimplementedWorkflowServiceServer) mustEmbedUnimplementedWorkflowServiceServer() {}
 func (UnimplementedWorkflowServiceServer) testEmbeddedByValue()                         {}
@@ -5415,6 +5437,24 @@ func _WorkflowService_DeleteNexusOperationExecution_Handler(srv interface{}, ctx
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WorkflowService_GetWorkflowExecutionResult_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetWorkflowExecutionResultRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WorkflowServiceServer).GetWorkflowExecutionResult(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WorkflowService_GetWorkflowExecutionResult_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WorkflowServiceServer).GetWorkflowExecutionResult(ctx, req.(*GetWorkflowExecutionResultRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WorkflowService_ServiceDesc is the grpc.ServiceDesc for WorkflowService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -5905,6 +5945,10 @@ var WorkflowService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteNexusOperationExecution",
 			Handler:    _WorkflowService_DeleteNexusOperationExecution_Handler,
+		},
+		{
+			MethodName: "GetWorkflowExecutionResult",
+			Handler:    _WorkflowService_GetWorkflowExecutionResult_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
