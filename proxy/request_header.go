@@ -113,6 +113,10 @@ func ExtractTemporalRequestHeaders(ctx context.Context, opts ExtractHeadersOptio
 		if val := r.GetExecution().GetWorkflowId(); val != "" && len(opts.ExistingMetadata.Get("temporal-resource-id")) == 0 {
 			headers = append(headers, "temporal-resource-id", fmt.Sprintf("workflow:%s", val))
 		}
+	case *workflowservice.GetWorkflowExecutionResultRequest:
+		if val := r.GetExecution().GetWorkflowId(); val != "" && len(opts.ExistingMetadata.Get("temporal-resource-id")) == 0 {
+			headers = append(headers, "temporal-resource-id", fmt.Sprintf("workflow:%s", val))
+		}
 	case *workflowservice.ListScheduleMatchingTimesRequest:
 		if val := r.GetScheduleId(); val != "" && len(opts.ExistingMetadata.Get("temporal-resource-id")) == 0 {
 			headers = append(headers, "temporal-resource-id", fmt.Sprintf("schedule:%s", val))

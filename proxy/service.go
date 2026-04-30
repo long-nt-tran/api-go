@@ -192,6 +192,10 @@ func (s *workflowServiceProxyServer) GetWorkflowExecutionHistoryReverse(ctx cont
 	return s.client.GetWorkflowExecutionHistoryReverse(s.reqCtx(ctx), in0)
 }
 
+func (s *workflowServiceProxyServer) GetWorkflowExecutionResult(ctx context.Context, in0 *workflowservice.GetWorkflowExecutionResultRequest) (*workflowservice.GetWorkflowExecutionResultResponse, error) {
+	return s.client.GetWorkflowExecutionResult(s.reqCtx(ctx), in0)
+}
+
 func (s *workflowServiceProxyServer) ListActivityExecutions(ctx context.Context, in0 *workflowservice.ListActivityExecutionsRequest) (*workflowservice.ListActivityExecutionsResponse, error) {
 	return s.client.ListActivityExecutions(s.reqCtx(ctx), in0)
 }
