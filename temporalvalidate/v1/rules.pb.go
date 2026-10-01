@@ -221,6 +221,22 @@ var file_temporalvalidate_v1_rules_proto_extTypes = []protoimpl.ExtensionInfo{
 	},
 	{
 		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
+		ExtensionType: (*bool)(nil),
+		Field:         900010,
+		Name:          "temporalvalidate.v1.validate_nested",
+		Tag:           "varint,900010,opt,name=validate_nested",
+		Filename:      "temporalvalidate/v1/rules.proto",
+	},
+	{
+		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
+		ExtensionType: (*string)(nil),
+		Field:         900011,
+		Name:          "temporalvalidate.v1.nested_coverage_ignored",
+		Tag:           "bytes,900011,opt,name=nested_coverage_ignored",
+		Filename:      "temporalvalidate/v1/rules.proto",
+	},
+	{
+		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
 		ExtensionType: (*DynamicRuleSpec)(nil),
 		Field:         900009,
 		Name:          "temporalvalidate.v1.rule_spec",
@@ -313,28 +329,36 @@ var file_temporalvalidate_v1_rules_proto_extTypes = []protoimpl.ExtensionInfo{
 var (
 	// optional string field_coverage_ignored = 900001;
 	E_FieldCoverageIgnored = &file_temporalvalidate_v1_rules_proto_extTypes[0]
+	// Audits the fields in a message, repeated message, or map message value.
+	//
+	// optional bool validate_nested = 900010;
+	E_ValidateNested = &file_temporalvalidate_v1_rules_proto_extTypes[1]
+	// Records why nested fields are outside this coverage audit.
+	//
+	// optional string nested_coverage_ignored = 900011;
+	E_NestedCoverageIgnored = &file_temporalvalidate_v1_rules_proto_extTypes[2]
 	// optional temporalvalidate.v1.DynamicRuleSpec rule_spec = 900009;
-	E_RuleSpec = &file_temporalvalidate_v1_rules_proto_extTypes[1]
+	E_RuleSpec = &file_temporalvalidate_v1_rules_proto_extTypes[3]
 	// optional bool dynamic_global_max_id_length = 900002;
-	E_DynamicGlobalMaxIdLength = &file_temporalvalidate_v1_rules_proto_extTypes[2]
+	E_DynamicGlobalMaxIdLength = &file_temporalvalidate_v1_rules_proto_extTypes[4]
 	// optional bool dynamic_namespace_max_service_name_length = 900003;
-	E_DynamicNamespaceMaxServiceNameLength = &file_temporalvalidate_v1_rules_proto_extTypes[3]
+	E_DynamicNamespaceMaxServiceNameLength = &file_temporalvalidate_v1_rules_proto_extTypes[5]
 	// optional bool dynamic_namespace_max_operation_name_length = 900004;
-	E_DynamicNamespaceMaxOperationNameLength = &file_temporalvalidate_v1_rules_proto_extTypes[4]
+	E_DynamicNamespaceMaxOperationNameLength = &file_temporalvalidate_v1_rules_proto_extTypes[6]
 	// optional bool dynamic_namespace_max_reason_length = 900005;
-	E_DynamicNamespaceMaxReasonLength = &file_temporalvalidate_v1_rules_proto_extTypes[5]
+	E_DynamicNamespaceMaxReasonLength = &file_temporalvalidate_v1_rules_proto_extTypes[7]
 	// optional bool dynamic_namespace_max_payload_size = 900006;
-	E_DynamicNamespaceMaxPayloadSize = &file_temporalvalidate_v1_rules_proto_extTypes[6]
+	E_DynamicNamespaceMaxPayloadSize = &file_temporalvalidate_v1_rules_proto_extTypes[8]
 	// optional bool dynamic_namespace_max_user_metadata_summary_size = 900007;
-	E_DynamicNamespaceMaxUserMetadataSummarySize = &file_temporalvalidate_v1_rules_proto_extTypes[7]
+	E_DynamicNamespaceMaxUserMetadataSummarySize = &file_temporalvalidate_v1_rules_proto_extTypes[9]
 	// optional bool dynamic_namespace_max_user_metadata_details_size = 900008;
-	E_DynamicNamespaceMaxUserMetadataDetailsSize = &file_temporalvalidate_v1_rules_proto_extTypes[8]
+	E_DynamicNamespaceMaxUserMetadataDetailsSize = &file_temporalvalidate_v1_rules_proto_extTypes[10]
 )
 
 // Extension fields to descriptorpb.MethodOptions.
 var (
 	// optional temporalvalidate.v1.RequestValidation request_validation = 900001;
-	E_RequestValidation = &file_temporalvalidate_v1_rules_proto_extTypes[9]
+	E_RequestValidation = &file_temporalvalidate_v1_rules_proto_extTypes[11]
 )
 
 // Extension fields to validate.StringRules.
@@ -342,11 +366,11 @@ var (
 	// Must be non-empty.
 	//
 	// optional bool namespace = 10003;
-	E_Namespace = &file_temporalvalidate_v1_rules_proto_extTypes[10]
+	E_Namespace = &file_temporalvalidate_v1_rules_proto_extTypes[12]
 	// Must be non-empty.
 	//
 	// optional bool operation_id = 10004;
-	E_OperationId = &file_temporalvalidate_v1_rules_proto_extTypes[11]
+	E_OperationId = &file_temporalvalidate_v1_rules_proto_extTypes[13]
 )
 
 var File_temporalvalidate_v1_rules_proto protoreflect.FileDescriptor
@@ -366,7 +390,9 @@ const file_temporalvalidate_v1_rules_proto_rawDesc = "" +
 	"\x1eDYNAMIC_RULE_SCOPE_UNSPECIFIED\x10\x00\x12\x1d\n" +
 	"\x19DYNAMIC_RULE_SCOPE_GLOBAL\x10\x01\x12 \n" +
 	"\x1cDYNAMIC_RULE_SCOPE_NAMESPACE\x10\x02:U\n" +
-	"\x16field_coverage_ignored\x12\x1d.google.protobuf.FieldOptions\x18\xa1\xf76 \x01(\tR\x14fieldCoverageIgnored:b\n" +
+	"\x16field_coverage_ignored\x12\x1d.google.protobuf.FieldOptions\x18\xa1\xf76 \x01(\tR\x14fieldCoverageIgnored:H\n" +
+	"\x0fvalidate_nested\x12\x1d.google.protobuf.FieldOptions\x18\xaa\xf76 \x01(\bR\x0evalidateNested:W\n" +
+	"\x17nested_coverage_ignored\x12\x1d.google.protobuf.FieldOptions\x18\xab\xf76 \x01(\tR\x15nestedCoverageIgnored:b\n" +
 	"\trule_spec\x12\x1d.google.protobuf.FieldOptions\x18\xa9\xf76 \x01(\v2$.temporalvalidate.v1.DynamicRuleSpecR\bruleSpec:j\n" +
 	"\x1cdynamic_global_max_id_length\x12\x1d.google.protobuf.FieldOptions\x18\xa2\xf76 \x01(\bB\tʺ\xb7\x03\x04\b\x01\x10\tR\x18dynamicGlobalMaxIdLength:\x83\x01\n" +
 	")dynamic_namespace_max_service_name_length\x12\x1d.google.protobuf.FieldOptions\x18\xa3\xf76 \x01(\bB\tʺ\xb7\x03\x04\b\x02\x10\tR$dynamicNamespaceMaxServiceNameLength:\x87\x01\n" +
@@ -375,13 +401,13 @@ const file_temporalvalidate_v1_rules_proto_rawDesc = "" +
 	"\"dynamic_namespace_max_payload_size\x12\x1d.google.protobuf.FieldOptions\x18\xa6\xf76 \x01(\bB)ʺ\xb7\x03$\b\x02\x10\v\x1a\x1etemporal.api.common.v1.PayloadR\x1edynamicNamespaceMaxPayloadSize:\xb2\x01\n" +
 	"0dynamic_namespace_max_user_metadata_summary_size\x12\x1d.google.protobuf.FieldOptions\x18\xa7\xf76 \x01(\bB+ʺ\xb7\x03&\b\x02\x10\v\x1a temporal.api.sdk.v1.UserMetadataR*dynamicNamespaceMaxUserMetadataSummarySize:\xb2\x01\n" +
 	"0dynamic_namespace_max_user_metadata_details_size\x12\x1d.google.protobuf.FieldOptions\x18\xa8\xf76 \x01(\bB+ʺ\xb7\x03&\b\x02\x10\v\x1a temporal.api.sdk.v1.UserMetadataR*dynamicNamespaceMaxUserMetadataDetailsSize:w\n" +
-	"\x12request_validation\x12\x1e.google.protobuf.MethodOptions\x18\xa1\xf76 \x01(\v2&.temporalvalidate.v1.RequestValidationR\x11requestValidation:\x8a\x01\n" +
-	"\tnamespace\x12\x19.buf.validate.StringRules\x18\x93N \x01(\bBP\xc2HM\n" +
-	"K\n" +
-	"!temporalvalidate.string.namespace\x12\x15namespace is required\x1a\x0fthis.size() > 0R\tnamespace:\x95\x01\n" +
-	"\foperation_id\x12\x19.buf.validate.StringRules\x18\x94N \x01(\bBV\xc2HS\n" +
-	"Q\n" +
-	"$temporalvalidate.string.operation_id\x12\x18operation_id is required\x1a\x0fthis.size() > 0R\voperationIdB9Z7go.temporal.io/api/temporalvalidate/v1;temporalvalidate"
+	"\x12request_validation\x12\x1e.google.protobuf.MethodOptions\x18\xa1\xf76 \x01(\v2&.temporalvalidate.v1.RequestValidationR\x11requestValidation:\x93\x01\n" +
+	"\tnamespace\x12\x19.buf.validate.StringRules\x18\x93N \x01(\bBY\xc2HV\n" +
+	"T\n" +
+	"!temporalvalidate.string.namespace\x12\x15namespace is required\x1a\x18!rule || this.size() > 0R\tnamespace:\x9e\x01\n" +
+	"\foperation_id\x12\x19.buf.validate.StringRules\x18\x94N \x01(\bB_\xc2H\\\n" +
+	"Z\n" +
+	"$temporalvalidate.string.operation_id\x12\x18operation_id is required\x1a\x18!rule || this.size() > 0R\voperationIdB9Z7go.temporal.io/api/temporalvalidate/v1;temporalvalidate"
 
 var (
 	file_temporalvalidate_v1_rules_proto_rawDescOnce sync.Once
@@ -410,23 +436,25 @@ var file_temporalvalidate_v1_rules_proto_depIdxs = []int32{
 	0,  // 0: temporalvalidate.v1.DynamicRuleSpec.scope:type_name -> temporalvalidate.v1.DynamicRuleScope
 	3,  // 1: temporalvalidate.v1.DynamicRuleSpec.field_type:type_name -> google.protobuf.FieldDescriptorProto.Type
 	4,  // 2: temporalvalidate.v1.field_coverage_ignored:extendee -> google.protobuf.FieldOptions
-	4,  // 3: temporalvalidate.v1.rule_spec:extendee -> google.protobuf.FieldOptions
-	4,  // 4: temporalvalidate.v1.dynamic_global_max_id_length:extendee -> google.protobuf.FieldOptions
-	4,  // 5: temporalvalidate.v1.dynamic_namespace_max_service_name_length:extendee -> google.protobuf.FieldOptions
-	4,  // 6: temporalvalidate.v1.dynamic_namespace_max_operation_name_length:extendee -> google.protobuf.FieldOptions
-	4,  // 7: temporalvalidate.v1.dynamic_namespace_max_reason_length:extendee -> google.protobuf.FieldOptions
-	4,  // 8: temporalvalidate.v1.dynamic_namespace_max_payload_size:extendee -> google.protobuf.FieldOptions
-	4,  // 9: temporalvalidate.v1.dynamic_namespace_max_user_metadata_summary_size:extendee -> google.protobuf.FieldOptions
-	4,  // 10: temporalvalidate.v1.dynamic_namespace_max_user_metadata_details_size:extendee -> google.protobuf.FieldOptions
-	5,  // 11: temporalvalidate.v1.request_validation:extendee -> google.protobuf.MethodOptions
-	6,  // 12: temporalvalidate.v1.namespace:extendee -> buf.validate.StringRules
-	6,  // 13: temporalvalidate.v1.operation_id:extendee -> buf.validate.StringRules
-	1,  // 14: temporalvalidate.v1.rule_spec:type_name -> temporalvalidate.v1.DynamicRuleSpec
-	2,  // 15: temporalvalidate.v1.request_validation:type_name -> temporalvalidate.v1.RequestValidation
-	16, // [16:16] is the sub-list for method output_type
-	16, // [16:16] is the sub-list for method input_type
-	14, // [14:16] is the sub-list for extension type_name
-	2,  // [2:14] is the sub-list for extension extendee
+	4,  // 3: temporalvalidate.v1.validate_nested:extendee -> google.protobuf.FieldOptions
+	4,  // 4: temporalvalidate.v1.nested_coverage_ignored:extendee -> google.protobuf.FieldOptions
+	4,  // 5: temporalvalidate.v1.rule_spec:extendee -> google.protobuf.FieldOptions
+	4,  // 6: temporalvalidate.v1.dynamic_global_max_id_length:extendee -> google.protobuf.FieldOptions
+	4,  // 7: temporalvalidate.v1.dynamic_namespace_max_service_name_length:extendee -> google.protobuf.FieldOptions
+	4,  // 8: temporalvalidate.v1.dynamic_namespace_max_operation_name_length:extendee -> google.protobuf.FieldOptions
+	4,  // 9: temporalvalidate.v1.dynamic_namespace_max_reason_length:extendee -> google.protobuf.FieldOptions
+	4,  // 10: temporalvalidate.v1.dynamic_namespace_max_payload_size:extendee -> google.protobuf.FieldOptions
+	4,  // 11: temporalvalidate.v1.dynamic_namespace_max_user_metadata_summary_size:extendee -> google.protobuf.FieldOptions
+	4,  // 12: temporalvalidate.v1.dynamic_namespace_max_user_metadata_details_size:extendee -> google.protobuf.FieldOptions
+	5,  // 13: temporalvalidate.v1.request_validation:extendee -> google.protobuf.MethodOptions
+	6,  // 14: temporalvalidate.v1.namespace:extendee -> buf.validate.StringRules
+	6,  // 15: temporalvalidate.v1.operation_id:extendee -> buf.validate.StringRules
+	1,  // 16: temporalvalidate.v1.rule_spec:type_name -> temporalvalidate.v1.DynamicRuleSpec
+	2,  // 17: temporalvalidate.v1.request_validation:type_name -> temporalvalidate.v1.RequestValidation
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	16, // [16:18] is the sub-list for extension type_name
+	2,  // [2:16] is the sub-list for extension extendee
 	0,  // [0:2] is the sub-list for field type_name
 }
 
@@ -442,7 +470,7 @@ func file_temporalvalidate_v1_rules_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_temporalvalidate_v1_rules_proto_rawDesc), len(file_temporalvalidate_v1_rules_proto_rawDesc)),
 			NumEnums:      1,
 			NumMessages:   2,
-			NumExtensions: 12,
+			NumExtensions: 14,
 			NumServices:   0,
 		},
 		GoTypes:           file_temporalvalidate_v1_rules_proto_goTypes,

@@ -20596,7 +20596,7 @@ var File_temporal_api_workflowservice_v1_request_response_proto protoreflect.Fil
 
 const file_temporal_api_workflowservice_v1_request_response_proto_rawDesc = "" +
 	"\n" +
-	"6temporal/api/workflowservice/v1/request_response.proto\x12\x1ftemporal.api.workflowservice.v1\x1a+temporal/api/enums/v1/batch_operation.proto\x1a\"temporal/api/enums/v1/common.proto\x1a$temporal/api/enums/v1/workflow.proto\x1a%temporal/api/enums/v1/namespace.proto\x1a(temporal/api/enums/v1/failed_cause.proto\x1a!temporal/api/enums/v1/query.proto\x1a!temporal/api/enums/v1/reset.proto\x1a&temporal/api/enums/v1/task_queue.proto\x1a&temporal/api/enums/v1/deployment.proto\x1a\"temporal/api/enums/v1/update.proto\x1a)temporal/api/enums/v1/time_skipping.proto\x1a$temporal/api/enums/v1/activity.proto\x1a!temporal/api/enums/v1/nexus.proto\x1a&temporal/api/activity/v1/message.proto\x1a$temporal/api/common/v1/message.proto\x1a%temporal/api/history/v1/message.proto\x1a&temporal/api/workflow/v1/message.proto\x1a%temporal/api/command/v1/message.proto\x1a$temporal/api/compute/v1/config.proto\x1a(temporal/api/deployment/v1/message.proto\x1a%temporal/api/failure/v1/message.proto\x1a$temporal/api/filter/v1/message.proto\x1a&temporal/api/protocol/v1/message.proto\x1a'temporal/api/namespace/v1/message.proto\x1a#temporal/api/query/v1/message.proto\x1a)temporal/api/replication/v1/message.proto\x1a#temporal/api/rules/v1/message.proto\x1a'temporal/api/sdk/v1/worker_config.proto\x1a&temporal/api/schedule/v1/message.proto\x1a'temporal/api/taskqueue/v1/message.proto\x1a$temporal/api/update/v1/message.proto\x1a%temporal/api/version/v1/message.proto\x1a#temporal/api/batch/v1/message.proto\x1a0temporal/api/sdk/v1/task_complete_metadata.proto\x1a'temporal/api/sdk/v1/user_metadata.proto\x1a#temporal/api/nexus/v1/message.proto\x1a,temporal/api/nexusoperation/v1/message.proto\x1a$temporal/api/worker/v1/message.proto\x1a\x1egoogle/protobuf/duration.proto\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xf9\x06\n" +
+	"6temporal/api/workflowservice/v1/request_response.proto\x12\x1ftemporal.api.workflowservice.v1\x1a+temporal/api/enums/v1/batch_operation.proto\x1a\"temporal/api/enums/v1/common.proto\x1a$temporal/api/enums/v1/workflow.proto\x1a%temporal/api/enums/v1/namespace.proto\x1a(temporal/api/enums/v1/failed_cause.proto\x1a!temporal/api/enums/v1/query.proto\x1a!temporal/api/enums/v1/reset.proto\x1a&temporal/api/enums/v1/task_queue.proto\x1a&temporal/api/enums/v1/deployment.proto\x1a\"temporal/api/enums/v1/update.proto\x1a)temporal/api/enums/v1/time_skipping.proto\x1a$temporal/api/enums/v1/activity.proto\x1a!temporal/api/enums/v1/nexus.proto\x1a&temporal/api/activity/v1/message.proto\x1a$temporal/api/common/v1/message.proto\x1a%temporal/api/history/v1/message.proto\x1a&temporal/api/workflow/v1/message.proto\x1a%temporal/api/command/v1/message.proto\x1a$temporal/api/compute/v1/config.proto\x1a(temporal/api/deployment/v1/message.proto\x1a%temporal/api/failure/v1/message.proto\x1a$temporal/api/filter/v1/message.proto\x1a&temporal/api/protocol/v1/message.proto\x1a'temporal/api/namespace/v1/message.proto\x1a#temporal/api/query/v1/message.proto\x1a)temporal/api/replication/v1/message.proto\x1a#temporal/api/rules/v1/message.proto\x1a'temporal/api/sdk/v1/worker_config.proto\x1a&temporal/api/schedule/v1/message.proto\x1a'temporal/api/taskqueue/v1/message.proto\x1a$temporal/api/update/v1/message.proto\x1a%temporal/api/version/v1/message.proto\x1a#temporal/api/batch/v1/message.proto\x1a0temporal/api/sdk/v1/task_complete_metadata.proto\x1a'temporal/api/sdk/v1/user_metadata.proto\x1a#temporal/api/nexus/v1/message.proto\x1a,temporal/api/nexusoperation/v1/message.proto\x1a$temporal/api/worker/v1/message.proto\x1a\x1egoogle/protobuf/duration.proto\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bbuf/validate/validate.proto\x1a\x1ftemporalvalidate/v1/rules.proto\"\xf9\x06\n" +
 	"\x18RegisterNamespaceRequest\x12\x1c\n" +
 	"\tnamespace\x18\x01 \x01(\tR\tnamespace\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x1f\n" +
@@ -22061,43 +22061,42 @@ const file_temporal_api_workflowservice_v1_request_response_proto_rawDesc = "" +
 	"\n" +
 	"executions\x18\x01 \x03(\v23.temporal.api.activity.v1.ActivityExecutionListInfoR\n" +
 	"executions\x12&\n" +
-	"\x0fnext_page_token\x18\x02 \x01(\fR\rnextPageToken\"\xae\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\fR\rnextPageToken\"\xef\x0f\n" +
+	"#StartNexusOperationExecutionRequest\x12'\n" +
+	"\tnamespace\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x98\xf1\x04\x01R\tnamespace\x12!\n" +
+	"\bidentity\x18\x02 \x01(\tB\x05\x90\xba\xb7\x03\x01R\bidentity\x12$\n" +
 	"\n" +
-	"#StartNexusOperationExecutionRequest\x12\x1c\n" +
-	"\tnamespace\x18\x01 \x01(\tR\tnamespace\x12\x1a\n" +
-	"\bidentity\x18\x02 \x01(\tR\bidentity\x12\x1d\n" +
-	"\n" +
-	"request_id\x18\x03 \x01(\tB\x05\x90\xba\xb7\x03\x01R\trequestId\x12(\n" +
-	"\foperation_id\x18\x04 \x01(\tB\x05\x90\xba\xb7\x03\x01R\voperationId\x12\"\n" +
+	"request_id\x18\x03 \x01(\tB\x05\x90\xba\xb7\x03\x01R\trequestId\x121\n" +
+	"\foperation_id\x18\x04 \x01(\tB\x0e\xbaH\x06r\x04\xa0\xf1\x04\x01\x90\xba\xb7\x03\x01R\voperationId\x12\"\n" +
 	"\bendpoint\x18\x05 \x01(\tB\x06\xbaH\x03\xc8\x01\x01R\bendpoint\x12%\n" +
 	"\aservice\x18\x06 \x01(\tB\v\xbaH\x03\xc8\x01\x01\x98\xba\xb7\x03\x01R\aservice\x12)\n" +
 	"\toperation\x18\a \x01(\tB\v\xbaH\x03\xc8\x01\x01\xa0\xba\xb7\x03\x01R\toperation\x12\x81\x01\n" +
 	"\x19schedule_to_close_timeout\x18\b \x01(\v2\x19.google.protobuf.DurationB+\x8a\xba\xb7\x03&validated and normalized by the serverR\x16scheduleToCloseTimeout\x12\x81\x01\n" +
 	"\x19schedule_to_start_timeout\x18\t \x01(\v2\x19.google.protobuf.DurationB+\x8a\xba\xb7\x03&validated and normalized by the serverR\x16scheduleToStartTimeout\x12{\n" +
 	"\x16start_to_close_timeout\x18\n" +
-	" \x01(\v2\x19.google.protobuf.DurationR\x13startToCloseTimeout\x125\n" +
-	"\x05input\x18\v \x01(\v2\x1f.temporal.api.common.v1.PayloadR\x05input\x12Z\n" +
-	"\x0fid_reuse_policy\x18\f \x01(\x0e22.temporal.api.enums.v1.NexusOperationIdReusePolicyR\ridReusePolicy\x12c\n" +
-	"\x12id_conflict_policy\x18\r \x01(\x0e25.temporal.api.enums.v1.NexusOperationIdConflictPolicyR\x10idConflictPolicy\x12a\n" +
-	"\x13on_conflict_options\x18\x11 \x01(\v21.temporal.api.nexusoperation.v1.OnConflictOptionsR\x11onConflictOptions\x12U\n" +
-	"\x11search_attributes\x18\x0e \x01(\v2(.temporal.api.common.v1.SearchAttributesR\x10searchAttributes\x12x\n" +
-	"\fnexus_header\x18\x0f \x03(\v2U.temporal.api.workflowservice.v1.StartNexusOperationExecutionRequest.NexusHeaderEntryR\vnexusHeader\x12F\n" +
-	"\ruser_metadata\x18\x10 \x01(\v2!.temporal.api.sdk.v1.UserMetadataR\fuserMetadata\x12S\n" +
-	"\x14completion_callbacks\x18\x12 \x03(\v2 .temporal.api.common.v1.CallbackR\x13completionCallbacks\x122\n" +
-	"\x05links\x18\x13 \x03(\v2\x1c.temporal.api.common.v1.LinkR\x05links\x1a>\n" +
+	" \x01(\v2\x19.google.protobuf.DurationB+\x8a\xba\xb7\x03&validated and normalized by the serverR\x13startToCloseTimeout\x12x\n" +
+	"\x05input\x18\v \x01(\v2\x1f.temporal.api.common.v1.PayloadBA\xb0\xba\xb7\x03\x01ں\xb7\x037opaque payload; the dynamic rule limits serialized sizeR\x05input\x12\xa7\x01\n" +
+	"\x0fid_reuse_policy\x18\f \x01(\x0e22.temporal.api.enums.v1.NexusOperationIdReusePolicyBK\x8a\xba\xb7\x03Fserver maps unspecified and unknown values to the default reuse policyR\ridReusePolicy\x12\xb3\x01\n" +
+	"\x12id_conflict_policy\x18\r \x01(\x0e25.temporal.api.enums.v1.NexusOperationIdConflictPolicyBN\x8a\xba\xb7\x03Iserver maps unspecified and unknown values to the default conflict policyR\x10idConflictPolicy\x12\xa2\x01\n" +
+	"\x13on_conflict_options\x18\x11 \x01(\v21.temporal.api.nexusoperation.v1.OnConflictOptionsB?\x8a\xba\xb7\x03:applied by the server when an existing operation is reusedR\x11onConflictOptions\x12\x8e\x01\n" +
+	"\x11search_attributes\x18\x0e \x01(\v2(.temporal.api.common.v1.SearchAttributesB7\x8a\xba\xb7\x032validated by the server search attribute validatorR\x10searchAttributes\x12\x96\x01\n" +
+	"\fnexus_header\x18\x0f \x03(\v2U.temporal.api.workflowservice.v1.StartNexusOperationExecutionRequest.NexusHeaderEntryB\x1c\x8a\xba\xb7\x03\x17validated by the serverR\vnexusHeader\x12W\n" +
+	"\ruser_metadata\x18\x10 \x01(\v2!.temporal.api.sdk.v1.UserMetadataB\x0f\xb8\xba\xb7\x03\x01\xc0\xba\xb7\x03\x01к\xb7\x03\x01R\fuserMetadata\x12\x84\x01\n" +
+	"\x14completion_callbacks\x18\x12 \x03(\v2 .temporal.api.common.v1.CallbackB/\x8a\xba\xb7\x03*validated by the server callback validatorR\x13completionCallbacks\x12_\n" +
+	"\x05links\x18\x13 \x03(\v2\x1c.temporal.api.common.v1.LinkB+\x8a\xba\xb7\x03&validated by the server link validatorR\x05links\x1a>\n" +
 	"\x10NexusHeaderEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"W\n" +
 	"$StartNexusOperationExecutionResponse\x12\x15\n" +
 	"\x06run_id\x18\x01 \x01(\tR\x05runId\x12\x18\n" +
-	"\astarted\x18\x02 \x01(\bR\astarted\"\xf6\x01\n" +
-	"&DescribeNexusOperationExecutionRequest\x12\x1c\n" +
-	"\tnamespace\x18\x01 \x01(\tR\tnamespace\x12!\n" +
-	"\foperation_id\x18\x02 \x01(\tR\voperationId\x12\x15\n" +
-	"\x06run_id\x18\x03 \x01(\tR\x05runId\x12#\n" +
-	"\rinclude_input\x18\x04 \x01(\bR\fincludeInput\x12'\n" +
-	"\x0finclude_outcome\x18\x05 \x01(\bR\x0eincludeOutcome\x12&\n" +
-	"\x0flong_poll_token\x18\x06 \x01(\fR\rlongPollToken\"\xcc\x03\n" +
+	"\astarted\x18\x02 \x01(\bR\astarted\"\xba\x03\n" +
+	"&DescribeNexusOperationExecutionRequest\x12'\n" +
+	"\tnamespace\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x98\xf1\x04\x01R\tnamespace\x121\n" +
+	"\foperation_id\x18\x02 \x01(\tB\x0e\xbaH\x06r\x04\xa0\xf1\x04\x01\x90\xba\xb7\x03\x01R\voperationId\x12j\n" +
+	"\x06run_id\x18\x03 \x01(\tBS\x8a\xba\xb7\x03Nempty selects the latest run; nonempty values are UUID-validated by the serverR\x05runId\x12>\n" +
+	"\rinclude_input\x18\x04 \x01(\bB\x19\x8a\xba\xb7\x03\x14all values are validR\fincludeInput\x12B\n" +
+	"\x0finclude_outcome\x18\x05 \x01(\bB\x19\x8a\xba\xb7\x03\x14all values are validR\x0eincludeOutcome\x12D\n" +
+	"\x0flong_poll_token\x18\x06 \x01(\fB\x1c\x8a\xba\xb7\x03\x17validated by the serverR\rlongPollToken\"\xcc\x03\n" +
 	"'DescribeNexusOperationExecutionResponse\x12\x15\n" +
 	"\x06run_id\x18\x01 \x01(\tR\x05runId\x12F\n" +
 	"\x04info\x18\x02 \x01(\v22.temporal.api.nexus.v1.NexusOperationExecutionInfoR\x04info\x125\n" +
@@ -22106,11 +22105,11 @@ const file_temporal_api_workflowservice_v1_request_response_proto_rawDesc = "" +
 	"\afailure\x18\x05 \x01(\v2 .temporal.api.failure.v1.FailureH\x00R\afailure\x12&\n" +
 	"\x0flong_poll_token\x18\x06 \x01(\fR\rlongPollToken\x12_\n" +
 	"\x14completion_callbacks\x18\a \x03(\v2,.temporal.api.nexusoperation.v1.CallbackInfoR\x13completionCallbacksB\t\n" +
-	"\aoutcome\"\xcb\x01\n" +
-	"\"PollNexusOperationExecutionRequest\x12\x1c\n" +
-	"\tnamespace\x18\x01 \x01(\tR\tnamespace\x12!\n" +
-	"\foperation_id\x18\x02 \x01(\tR\voperationId\x12\x15\n" +
-	"\x06run_id\x18\x03 \x01(\tR\x05runId\x12M\n" +
+	"\aoutcome\"\xc5\x02\n" +
+	"\"PollNexusOperationExecutionRequest\x12'\n" +
+	"\tnamespace\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x98\xf1\x04\x01R\tnamespace\x121\n" +
+	"\foperation_id\x18\x02 \x01(\tB\x0e\xbaH\x06r\x04\xa0\xf1\x04\x01\x90\xba\xb7\x03\x01R\voperationId\x12j\n" +
+	"\x06run_id\x18\x03 \x01(\tBS\x8a\xba\xb7\x03Nempty selects the latest run; nonempty values are UUID-validated by the serverR\x05runId\x12W\n" +
 	"\n" +
 	"wait_stage\x18\x04 \x01(\x0e2..temporal.api.enums.v1.NexusOperationWaitStageB\b\xbaH\x05\x82\x01\x02\x10\x01R\twaitStage\"\xb8\x02\n" +
 	"#PollNexusOperationExecutionResponse\x12\x15\n" +
@@ -22174,29 +22173,29 @@ const file_temporal_api_workflowservice_v1_request_response_proto_rawDesc = "" +
 	"\vactivity_id\x18\x02 \x01(\tR\n" +
 	"activityId\x12\x15\n" +
 	"\x06run_id\x18\x03 \x01(\tR\x05runId\"!\n" +
-	"\x1fDeleteActivityExecutionResponse\"\xab\x02\n" +
+	"\x1fDeleteActivityExecutionResponse\"\xdd\x02\n" +
 	"+RequestCancelNexusOperationExecutionRequest\x12'\n" +
 	"\tnamespace\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x98\xf1\x04\x01R\tnamespace\x121\n" +
-	"\foperation_id\x18\x02 \x01(\tB\x0e\xbaH\x06r\x04\xa0\xf1\x04\x01\x90\xba\xb7\x03\x01R\voperationId\x128\n" +
-	"\x06run_id\x18\x03 \x01(\tB!\x8a\xba\xb7\x03\x1cempty selects the latest runR\x05runId\x12!\n" +
+	"\foperation_id\x18\x02 \x01(\tB\x0e\xbaH\x06r\x04\xa0\xf1\x04\x01\x90\xba\xb7\x03\x01R\voperationId\x12j\n" +
+	"\x06run_id\x18\x03 \x01(\tBS\x8a\xba\xb7\x03Nempty selects the latest run; nonempty values are UUID-validated by the serverR\x05runId\x12!\n" +
 	"\bidentity\x18\x04 \x01(\tB\x05\x90\xba\xb7\x03\x01R\bidentity\x12$\n" +
 	"\n" +
 	"request_id\x18\x05 \x01(\tB\x05\x90\xba\xb7\x03\x01R\trequestId\x12\x1d\n" +
 	"\x06reason\x18\x06 \x01(\tB\x05\xa8\xba\xb7\x03\x01R\x06reason\".\n" +
-	",RequestCancelNexusOperationExecutionResponse\"\xa7\x02\n" +
+	",RequestCancelNexusOperationExecutionResponse\"\xd9\x02\n" +
 	"'TerminateNexusOperationExecutionRequest\x12'\n" +
 	"\tnamespace\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x98\xf1\x04\x01R\tnamespace\x121\n" +
-	"\foperation_id\x18\x02 \x01(\tB\x0e\xbaH\x06r\x04\xa0\xf1\x04\x01\x90\xba\xb7\x03\x01R\voperationId\x128\n" +
-	"\x06run_id\x18\x03 \x01(\tB!\x8a\xba\xb7\x03\x1cempty selects the latest runR\x05runId\x12!\n" +
+	"\foperation_id\x18\x02 \x01(\tB\x0e\xbaH\x06r\x04\xa0\xf1\x04\x01\x90\xba\xb7\x03\x01R\voperationId\x12j\n" +
+	"\x06run_id\x18\x03 \x01(\tBS\x8a\xba\xb7\x03Nempty selects the latest run; nonempty values are UUID-validated by the serverR\x05runId\x12!\n" +
 	"\bidentity\x18\x04 \x01(\tB\x05\x90\xba\xb7\x03\x01R\bidentity\x12$\n" +
 	"\n" +
 	"request_id\x18\x05 \x01(\tB\x05\x90\xba\xb7\x03\x01R\trequestId\x12\x1d\n" +
 	"\x06reason\x18\x06 \x01(\tB\x05\xa8\xba\xb7\x03\x01R\x06reason\"*\n" +
-	"(TerminateNexusOperationExecutionResponse\"\xbc\x01\n" +
+	"(TerminateNexusOperationExecutionResponse\"\xee\x01\n" +
 	"$DeleteNexusOperationExecutionRequest\x12'\n" +
 	"\tnamespace\x18\x01 \x01(\tB\t\xbaH\x06r\x04\x98\xf1\x04\x01R\tnamespace\x121\n" +
-	"\foperation_id\x18\x02 \x01(\tB\x0e\xbaH\x06r\x04\xa0\xf1\x04\x01\x90\xba\xb7\x03\x01R\voperationId\x128\n" +
-	"\x06run_id\x18\x03 \x01(\tB!\x8a\xba\xb7\x03\x1cempty selects the latest runR\x05runId\"'\n" +
+	"\foperation_id\x18\x02 \x01(\tB\x0e\xbaH\x06r\x04\xa0\xf1\x04\x01\x90\xba\xb7\x03\x01R\voperationId\x12j\n" +
+	"\x06run_id\x18\x03 \x01(\tBS\x8a\xba\xb7\x03Nempty selects the latest run; nonempty values are UUID-validated by the serverR\x05runId\"'\n" +
 	"%DeleteNexusOperationExecutionResponse\"\xca\x01\n" +
 	"(PollWorkflowExecutionTimeSkippingRequest\x12\x1c\n" +
 	"\tnamespace\x18\x01 \x01(\tR\tnamespace\x12X\n" +
