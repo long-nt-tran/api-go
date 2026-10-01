@@ -10,15 +10,14 @@
 package temporalvalidate
 
 import (
-	reflect "reflect"
-	"strconv"
-	sync "sync"
-	unsafe "unsafe"
-
 	validate "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	descriptorpb "google.golang.org/protobuf/types/descriptorpb"
+	reflect "reflect"
+	"strconv"
+	sync "sync"
+	unsafe "unsafe"
 )
 
 const (
@@ -210,6 +209,59 @@ func (x *RequestValidation) GetIgnored() string {
 	return ""
 }
 
+// Selects exhaustive response field validation. Value failures only warn.
+type ResponseValidation struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Enabled       *bool                  `protobuf:"varint,1,opt,name=enabled" json:"enabled,omitempty"`
+	Ignored       *string                `protobuf:"bytes,2,opt,name=ignored" json:"ignored,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ResponseValidation) Reset() {
+	*x = ResponseValidation{}
+	mi := &file_temporalvalidate_v1_rules_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ResponseValidation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ResponseValidation) ProtoMessage() {}
+
+func (x *ResponseValidation) ProtoReflect() protoreflect.Message {
+	mi := &file_temporalvalidate_v1_rules_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ResponseValidation.ProtoReflect.Descriptor instead.
+func (*ResponseValidation) Descriptor() ([]byte, []int) {
+	return file_temporalvalidate_v1_rules_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ResponseValidation) GetEnabled() bool {
+	if x != nil && x.Enabled != nil {
+		return *x.Enabled
+	}
+	return false
+}
+
+func (x *ResponseValidation) GetIgnored() string {
+	if x != nil && x.Ignored != nil {
+		return *x.Ignored
+	}
+	return ""
+}
+
 var file_temporalvalidate_v1_rules_proto_extTypes = []protoimpl.ExtensionInfo{
 	{
 		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
@@ -308,6 +360,14 @@ var file_temporalvalidate_v1_rules_proto_extTypes = []protoimpl.ExtensionInfo{
 		Filename:      "temporalvalidate/v1/rules.proto",
 	},
 	{
+		ExtendedType:  (*descriptorpb.MethodOptions)(nil),
+		ExtensionType: (*ResponseValidation)(nil),
+		Field:         900002,
+		Name:          "temporalvalidate.v1.response_validation",
+		Tag:           "bytes,900002,opt,name=response_validation",
+		Filename:      "temporalvalidate/v1/rules.proto",
+	},
+	{
 		ExtendedType:  (*validate.StringRules)(nil),
 		ExtensionType: (*bool)(nil),
 		Field:         10003,
@@ -359,6 +419,8 @@ var (
 var (
 	// optional temporalvalidate.v1.RequestValidation request_validation = 900001;
 	E_RequestValidation = &file_temporalvalidate_v1_rules_proto_extTypes[11]
+	// optional temporalvalidate.v1.ResponseValidation response_validation = 900002;
+	E_ResponseValidation = &file_temporalvalidate_v1_rules_proto_extTypes[12]
 )
 
 // Extension fields to validate.StringRules.
@@ -366,11 +428,11 @@ var (
 	// Must be non-empty.
 	//
 	// optional bool namespace = 10003;
-	E_Namespace = &file_temporalvalidate_v1_rules_proto_extTypes[12]
+	E_Namespace = &file_temporalvalidate_v1_rules_proto_extTypes[13]
 	// Must be non-empty.
 	//
 	// optional bool operation_id = 10004;
-	E_OperationId = &file_temporalvalidate_v1_rules_proto_extTypes[13]
+	E_OperationId = &file_temporalvalidate_v1_rules_proto_extTypes[14]
 )
 
 var File_temporalvalidate_v1_rules_proto protoreflect.FileDescriptor
@@ -384,6 +446,9 @@ const file_temporalvalidate_v1_rules_proto_rawDesc = "" +
 	"field_type\x18\x02 \x01(\x0e2*.google.protobuf.FieldDescriptorProto.TypeR\tfieldType\x12!\n" +
 	"\fmessage_type\x18\x03 \x01(\tR\vmessageType\"G\n" +
 	"\x11RequestValidation\x12\x18\n" +
+	"\aenabled\x18\x01 \x01(\bR\aenabled\x12\x18\n" +
+	"\aignored\x18\x02 \x01(\tR\aignored\"H\n" +
+	"\x12ResponseValidation\x12\x18\n" +
 	"\aenabled\x18\x01 \x01(\bR\aenabled\x12\x18\n" +
 	"\aignored\x18\x02 \x01(\tR\aignored*w\n" +
 	"\x10DynamicRuleScope\x12\"\n" +
@@ -401,7 +466,8 @@ const file_temporalvalidate_v1_rules_proto_rawDesc = "" +
 	"\"dynamic_namespace_max_payload_size\x12\x1d.google.protobuf.FieldOptions\x18\xa6\xf76 \x01(\bB)ʺ\xb7\x03$\b\x02\x10\v\x1a\x1etemporal.api.common.v1.PayloadR\x1edynamicNamespaceMaxPayloadSize:\xb2\x01\n" +
 	"0dynamic_namespace_max_user_metadata_summary_size\x12\x1d.google.protobuf.FieldOptions\x18\xa7\xf76 \x01(\bB+ʺ\xb7\x03&\b\x02\x10\v\x1a temporal.api.sdk.v1.UserMetadataR*dynamicNamespaceMaxUserMetadataSummarySize:\xb2\x01\n" +
 	"0dynamic_namespace_max_user_metadata_details_size\x12\x1d.google.protobuf.FieldOptions\x18\xa8\xf76 \x01(\bB+ʺ\xb7\x03&\b\x02\x10\v\x1a temporal.api.sdk.v1.UserMetadataR*dynamicNamespaceMaxUserMetadataDetailsSize:w\n" +
-	"\x12request_validation\x12\x1e.google.protobuf.MethodOptions\x18\xa1\xf76 \x01(\v2&.temporalvalidate.v1.RequestValidationR\x11requestValidation:\x93\x01\n" +
+	"\x12request_validation\x12\x1e.google.protobuf.MethodOptions\x18\xa1\xf76 \x01(\v2&.temporalvalidate.v1.RequestValidationR\x11requestValidation:z\n" +
+	"\x13response_validation\x12\x1e.google.protobuf.MethodOptions\x18\xa2\xf76 \x01(\v2'.temporalvalidate.v1.ResponseValidationR\x12responseValidation:\x93\x01\n" +
 	"\tnamespace\x12\x19.buf.validate.StringRules\x18\x93N \x01(\bBY\xc2HV\n" +
 	"T\n" +
 	"!temporalvalidate.string.namespace\x12\x15namespace is required\x1a\x18!rule || this.size() > 0R\tnamespace:\x9e\x01\n" +
@@ -422,39 +488,42 @@ func file_temporalvalidate_v1_rules_proto_rawDescGZIP() []byte {
 }
 
 var file_temporalvalidate_v1_rules_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
-var file_temporalvalidate_v1_rules_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_temporalvalidate_v1_rules_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_temporalvalidate_v1_rules_proto_goTypes = []any{
 	(DynamicRuleScope)(0),                       // 0: temporalvalidate.v1.DynamicRuleScope
 	(*DynamicRuleSpec)(nil),                     // 1: temporalvalidate.v1.DynamicRuleSpec
 	(*RequestValidation)(nil),                   // 2: temporalvalidate.v1.RequestValidation
-	(descriptorpb.FieldDescriptorProto_Type)(0), // 3: google.protobuf.FieldDescriptorProto.Type
-	(*descriptorpb.FieldOptions)(nil),           // 4: google.protobuf.FieldOptions
-	(*descriptorpb.MethodOptions)(nil),          // 5: google.protobuf.MethodOptions
-	(*validate.StringRules)(nil),                // 6: buf.validate.StringRules
+	(*ResponseValidation)(nil),                  // 3: temporalvalidate.v1.ResponseValidation
+	(descriptorpb.FieldDescriptorProto_Type)(0), // 4: google.protobuf.FieldDescriptorProto.Type
+	(*descriptorpb.FieldOptions)(nil),           // 5: google.protobuf.FieldOptions
+	(*descriptorpb.MethodOptions)(nil),          // 6: google.protobuf.MethodOptions
+	(*validate.StringRules)(nil),                // 7: buf.validate.StringRules
 }
 var file_temporalvalidate_v1_rules_proto_depIdxs = []int32{
 	0,  // 0: temporalvalidate.v1.DynamicRuleSpec.scope:type_name -> temporalvalidate.v1.DynamicRuleScope
-	3,  // 1: temporalvalidate.v1.DynamicRuleSpec.field_type:type_name -> google.protobuf.FieldDescriptorProto.Type
-	4,  // 2: temporalvalidate.v1.field_coverage_ignored:extendee -> google.protobuf.FieldOptions
-	4,  // 3: temporalvalidate.v1.validate_nested:extendee -> google.protobuf.FieldOptions
-	4,  // 4: temporalvalidate.v1.nested_coverage_ignored:extendee -> google.protobuf.FieldOptions
-	4,  // 5: temporalvalidate.v1.rule_spec:extendee -> google.protobuf.FieldOptions
-	4,  // 6: temporalvalidate.v1.dynamic_global_max_id_length:extendee -> google.protobuf.FieldOptions
-	4,  // 7: temporalvalidate.v1.dynamic_namespace_max_service_name_length:extendee -> google.protobuf.FieldOptions
-	4,  // 8: temporalvalidate.v1.dynamic_namespace_max_operation_name_length:extendee -> google.protobuf.FieldOptions
-	4,  // 9: temporalvalidate.v1.dynamic_namespace_max_reason_length:extendee -> google.protobuf.FieldOptions
-	4,  // 10: temporalvalidate.v1.dynamic_namespace_max_payload_size:extendee -> google.protobuf.FieldOptions
-	4,  // 11: temporalvalidate.v1.dynamic_namespace_max_user_metadata_summary_size:extendee -> google.protobuf.FieldOptions
-	4,  // 12: temporalvalidate.v1.dynamic_namespace_max_user_metadata_details_size:extendee -> google.protobuf.FieldOptions
-	5,  // 13: temporalvalidate.v1.request_validation:extendee -> google.protobuf.MethodOptions
-	6,  // 14: temporalvalidate.v1.namespace:extendee -> buf.validate.StringRules
-	6,  // 15: temporalvalidate.v1.operation_id:extendee -> buf.validate.StringRules
-	1,  // 16: temporalvalidate.v1.rule_spec:type_name -> temporalvalidate.v1.DynamicRuleSpec
-	2,  // 17: temporalvalidate.v1.request_validation:type_name -> temporalvalidate.v1.RequestValidation
-	18, // [18:18] is the sub-list for method output_type
-	18, // [18:18] is the sub-list for method input_type
-	16, // [16:18] is the sub-list for extension type_name
-	2,  // [2:16] is the sub-list for extension extendee
+	4,  // 1: temporalvalidate.v1.DynamicRuleSpec.field_type:type_name -> google.protobuf.FieldDescriptorProto.Type
+	5,  // 2: temporalvalidate.v1.field_coverage_ignored:extendee -> google.protobuf.FieldOptions
+	5,  // 3: temporalvalidate.v1.validate_nested:extendee -> google.protobuf.FieldOptions
+	5,  // 4: temporalvalidate.v1.nested_coverage_ignored:extendee -> google.protobuf.FieldOptions
+	5,  // 5: temporalvalidate.v1.rule_spec:extendee -> google.protobuf.FieldOptions
+	5,  // 6: temporalvalidate.v1.dynamic_global_max_id_length:extendee -> google.protobuf.FieldOptions
+	5,  // 7: temporalvalidate.v1.dynamic_namespace_max_service_name_length:extendee -> google.protobuf.FieldOptions
+	5,  // 8: temporalvalidate.v1.dynamic_namespace_max_operation_name_length:extendee -> google.protobuf.FieldOptions
+	5,  // 9: temporalvalidate.v1.dynamic_namespace_max_reason_length:extendee -> google.protobuf.FieldOptions
+	5,  // 10: temporalvalidate.v1.dynamic_namespace_max_payload_size:extendee -> google.protobuf.FieldOptions
+	5,  // 11: temporalvalidate.v1.dynamic_namespace_max_user_metadata_summary_size:extendee -> google.protobuf.FieldOptions
+	5,  // 12: temporalvalidate.v1.dynamic_namespace_max_user_metadata_details_size:extendee -> google.protobuf.FieldOptions
+	6,  // 13: temporalvalidate.v1.request_validation:extendee -> google.protobuf.MethodOptions
+	6,  // 14: temporalvalidate.v1.response_validation:extendee -> google.protobuf.MethodOptions
+	7,  // 15: temporalvalidate.v1.namespace:extendee -> buf.validate.StringRules
+	7,  // 16: temporalvalidate.v1.operation_id:extendee -> buf.validate.StringRules
+	1,  // 17: temporalvalidate.v1.rule_spec:type_name -> temporalvalidate.v1.DynamicRuleSpec
+	2,  // 18: temporalvalidate.v1.request_validation:type_name -> temporalvalidate.v1.RequestValidation
+	3,  // 19: temporalvalidate.v1.response_validation:type_name -> temporalvalidate.v1.ResponseValidation
+	20, // [20:20] is the sub-list for method output_type
+	20, // [20:20] is the sub-list for method input_type
+	17, // [17:20] is the sub-list for extension type_name
+	2,  // [2:17] is the sub-list for extension extendee
 	0,  // [0:2] is the sub-list for field type_name
 }
 
@@ -469,8 +538,8 @@ func file_temporalvalidate_v1_rules_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_temporalvalidate_v1_rules_proto_rawDesc), len(file_temporalvalidate_v1_rules_proto_rawDesc)),
 			NumEnums:      1,
-			NumMessages:   2,
-			NumExtensions: 14,
+			NumMessages:   3,
+			NumExtensions: 15,
 			NumServices:   0,
 		},
 		GoTypes:           file_temporalvalidate_v1_rules_proto_goTypes,
