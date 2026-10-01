@@ -5,7 +5,7 @@ all: install test
 install: grpc-install mockgen-install goimports-install update-proto
 
 # Compile proto files.
-proto: http-api-docs grpc goimports proxy grpc-mock
+proto: http-api-docs grpc goimports proxy grpc-mock validation-services
 
 # Update submodule and compile proto files.
 update-proto: update-proto-submodule proto gomodtidy
@@ -79,6 +79,7 @@ go-grpc: clean .go-helpers-installed $(PROTO_OUT)
 		--exclude=internal \
 		--exclude=proto/api/google \
 		--exclude=proto/api/buf \
+		--exclude=proto/api/temporalvalidate/examples \
 		-p go-grpc_out=$(PROTO_PATHS) \
 		-p grpc-gateway_out=allow_patch_feature=false,$(PROTO_PATHS) \
 		-p go-helpers_out=$(PROTO_PATHS)
@@ -123,6 +124,7 @@ gen-proto-desc:
 		--exclude=internal \
 		--exclude=proto/api/google \
 		--exclude=proto/api/buf \
+		--exclude=proto/api/temporalvalidate/examples \
 		--no-rewrite-enum-const \
 		--no-rewrite-enum-string \
 		--output-descriptor=$(PROTO_OUT)/descriptor_set.pb
@@ -170,7 +172,12 @@ test: copy-helpers
 
 ##### Check #####
 
+validation-services: gen-proto-desc
+	mkdir -p temporalproto/registry
+	go run ./cmd/genvalidationservices
+
 generatorcheck: gen-proto-desc
+	go run ./cmd/genvalidationservices -check
 	printf $(COLOR) "Check generated code is not stale..."
 	(cd ./cmd/proxygenerator && go mod tidy && go run ./ -verifyOnly)
 

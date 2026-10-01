@@ -12,6 +12,7 @@ import (
 	unsafe "unsafe"
 
 	v1 "go.temporal.io/api/common/v1"
+	_ "go.temporal.io/api/temporalvalidate/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
@@ -26,14 +27,11 @@ const (
 // Information a user can set, often for use by user interfaces.
 type UserMetadata struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// Short-form text that provides a summary. This payload should be a "json/plain"-encoded payload
-	// that is a single JSON string for use in user interfaces. User interface formatting may not
-	// apply to this text when used in "title" situations. The payload data section is limited to 400
-	// bytes by default.
+	// Summary for user interfaces. Use a json/plain payload with one JSON string.
+	// The default serialized size limit is 400 bytes.
 	Summary *v1.Payload `protobuf:"bytes,1,opt,name=summary,proto3" json:"summary,omitempty"`
-	// Long-form text that provides details. This payload should be a "json/plain"-encoded payload
-	// that is a single JSON string for use in user interfaces. User interface formatting may apply to
-	// this text in common use. The payload data section is limited to 20000 bytes by default.
+	// Details for user interfaces. Use a json/plain payload with one JSON string.
+	// The default serialized size limit is 20000 bytes.
 	Details       *v1.Payload `protobuf:"bytes,2,opt,name=details,proto3" json:"details,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -87,10 +85,10 @@ var File_temporal_api_sdk_v1_user_metadata_proto protoreflect.FileDescriptor
 
 const file_temporal_api_sdk_v1_user_metadata_proto_rawDesc = "" +
 	"\n" +
-	"'temporal/api/sdk/v1/user_metadata.proto\x12\x13temporal.api.sdk.v1\x1a$temporal/api/common/v1/message.proto\"\x84\x01\n" +
-	"\fUserMetadata\x129\n" +
-	"\asummary\x18\x01 \x01(\v2\x1f.temporal.api.common.v1.PayloadR\asummary\x129\n" +
-	"\adetails\x18\x02 \x01(\v2\x1f.temporal.api.common.v1.PayloadR\adetailsB\x7f\n" +
+	"'temporal/api/sdk/v1/user_metadata.proto\x12\x13temporal.api.sdk.v1\x1a$temporal/api/common/v1/message.proto\x1a\x1ftemporalvalidate/v1/rules.proto\"\xa0\x02\n" +
+	"\fUserMetadata\x12\x86\x01\n" +
+	"\asummary\x18\x01 \x01(\v2\x1f.temporal.api.common.v1.PayloadBK\x8a\xba\xb7\x03Fserialized size is checked by the request's user metadata summary ruleR\asummary\x12\x86\x01\n" +
+	"\adetails\x18\x02 \x01(\v2\x1f.temporal.api.common.v1.PayloadBK\x8a\xba\xb7\x03Fserialized size is checked by the request's user metadata details ruleR\adetailsB\x7f\n" +
 	"\x16io.temporal.api.sdk.v1B\x11UserMetadataProtoP\x01Z\x1dgo.temporal.io/api/sdk/v1;sdk\xaa\x02\x15Temporalio.Api.Sdk.V1\xea\x02\x18Temporalio::Api::Sdk::V1b\x06proto3"
 
 var (
