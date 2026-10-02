@@ -216,6 +216,10 @@ func compileProtos(ctx context.Context, cfg genConfig) error {
 	if err := runProtoc(ctx, cfg, dirs); err != nil {
 		return err
 	}
+	// Descriptor-only generation must not rewrite existing Go files.
+	if cfg.outputDescriptorPath != "" {
+		return nil
+	}
 
 	// Add Enum:Prefix pairs for all identified pairs that weren't specifically overridden
 	for i := 0; i < len(enums); i++ {

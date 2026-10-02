@@ -5,7 +5,7 @@ all: install test
 install: grpc-install mockgen-install goimports-install update-proto
 
 # Compile proto files.
-proto: http-api-docs grpc goimports proxy grpc-mock validation-services
+proto: http-api-docs grpc goimports proxy grpc-mock validation-services validation-functions
 
 # Update submodule and compile proto files.
 update-proto: update-proto-submodule proto gomodtidy
@@ -178,10 +178,14 @@ validation-services: gen-proto-desc
 
 generatorcheck: gen-proto-desc
 	go run ./cmd/genvalidationservices -check
+	go run ./cmd/protoc-gen-temporalvalidate -descriptor-set descriptor_set.pb -check
 	printf $(COLOR) "Check generated code is not stale..."
 	(cd ./cmd/proxygenerator && go mod tidy && go run ./ -verifyOnly)
 
 check: generatorcheck
+
+validation-functions: gen-proto-desc
+	go run ./cmd/protoc-gen-temporalvalidate -descriptor-set descriptor_set.pb
 
 ##### Clean #####
 clean:

@@ -7,14 +7,13 @@
 package sdk
 
 import (
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
-
 	v1 "go.temporal.io/api/common/v1"
 	_ "go.temporal.io/api/temporalvalidate/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	reflect "reflect"
+	sync "sync"
+	unsafe "unsafe"
 )
 
 const (
@@ -85,10 +84,10 @@ var File_temporal_api_sdk_v1_user_metadata_proto protoreflect.FileDescriptor
 
 const file_temporal_api_sdk_v1_user_metadata_proto_rawDesc = "" +
 	"\n" +
-	"'temporal/api/sdk/v1/user_metadata.proto\x12\x13temporal.api.sdk.v1\x1a$temporal/api/common/v1/message.proto\x1a\x1ftemporalvalidate/v1/rules.proto\"\xa0\x02\n" +
-	"\fUserMetadata\x12\x86\x01\n" +
-	"\asummary\x18\x01 \x01(\v2\x1f.temporal.api.common.v1.PayloadBK\x8a\xba\xb7\x03Fserialized size is checked by the request's user metadata summary ruleR\asummary\x12\x86\x01\n" +
-	"\adetails\x18\x02 \x01(\v2\x1f.temporal.api.common.v1.PayloadBK\x8a\xba\xb7\x03Fserialized size is checked by the request's user metadata details ruleR\adetailsB\x7f\n" +
+	"'temporal/api/sdk/v1/user_metadata.proto\x12\x13temporal.api.sdk.v1\x1a$temporal/api/common/v1/message.proto\x1a%temporalvalidate/v1/annotations.proto\"\xea\x01\n" +
+	"\fUserMetadata\x12l\n" +
+	"\asummary\x18\x01 \x01(\v2\x1f.temporal.api.common.v1.PayloadB1\x8a\xba\xb7\x03,ValidateUserMetadata checks the summary sizeR\asummary\x12l\n" +
+	"\adetails\x18\x02 \x01(\v2\x1f.temporal.api.common.v1.PayloadB1\x8a\xba\xb7\x03,ValidateUserMetadata checks the details sizeR\adetailsB\x7f\n" +
 	"\x16io.temporal.api.sdk.v1B\x11UserMetadataProtoP\x01Z\x1dgo.temporal.io/api/sdk/v1;sdk\xaa\x02\x15Temporalio.Api.Sdk.V1\xea\x02\x18Temporalio::Api::Sdk::V1b\x06proto3"
 
 var (
